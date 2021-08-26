@@ -1,7 +1,7 @@
 operations_count = 0
 
 def main():
-    ask_again = False
+    ask_again = True
     while(ask_again):
         a = input("Enter the numerator: ")
         b = input("Enter the denominator: ")
