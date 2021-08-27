@@ -2,6 +2,7 @@ import subprocess
 import sys
 import boto3
 import datetime
+from datetime import timedelta
 
 s3 = boto3.client('s3')
 
@@ -17,10 +18,12 @@ def kickoff_subprocess(cmd, log_file_name):
     timestamp = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
     output = timestamp + " Command: "+ cmd[0] + " | Return Code: " + str(process) + "\n"
     file.write(output)
+	file.close()
 
 def upload_output_to_S3(log_file_name):
     f = open(log_file_name, "rb")
-    s3.upload_fileobj(f, "<FMI1>", log_file_name)
+    s3.upload_fileobj(f, "kiosk-21", log_file_name)
+	f.close
 
 if __name__ == "__main__":
    main(sys.argv[1:])
