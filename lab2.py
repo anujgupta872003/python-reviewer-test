@@ -1,5 +1,4 @@
 
-
 def main():
     ask_again = True
 	operations_count = 0
